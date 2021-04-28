@@ -1,0 +1,29 @@
+version: 2.1
+
+#### This is the forkeeeeeeeee
+
+jobs:
+  build:
+    parameters:
+      argument:
+        description: the argument to run the command against
+        type: string
+        
+    docker:
+      - image: circleci/python
+    steps:
+      - run :
+          command: |
+              echo << parameters.argument >>
+              #condition_needed_2=true
+              #echo 'export condition_needed_2="true"' >> $BASH_ENV
+      
+      
+workflows:
+  workflow:
+    jobs:
+      - build:
+          name: Build << matrix.argument >>
+          matrix:
+            parameters:
+              argument: ["macos", "windows", "linux"]
