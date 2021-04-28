@@ -1,9 +1,9 @@
 version: 2.1
 
 default: &defaults
-  executor:
-    docker:
-      - image: circleci/python
+  docker:
+    - image: circleci/python
+    
 jobs:
   build:
     <<: *defaults
