@@ -6,7 +6,7 @@ jobs:
   build:
     parameters:
       argument:
-        description: the argument to run the command against
+      #  description: the argument to run the command against
         type: string
         
     docker:
@@ -20,7 +20,7 @@ jobs:
   test:
     parameters:
       argument:
-        description: the argument to run the test against
+      #  description: the argument to run the test against
         type: string
         
     docker:
@@ -31,6 +31,14 @@ jobs:
           command: |
               echo "I'm testing << parameters.argument >>"
       
+  cleanup:
+    docker:
+      - image: circleci/python
+    steps:
+      - run :
+          name: Cleaning Everything
+          command: |
+              echo "I'm cleaning up" 
       
 workflows:
   workflow:
@@ -49,3 +57,7 @@ workflows:
               argument: ["macos", "windows", "linux"]
           requires:
             - Build << matrix.argument >>
+            
+      - cleanup:
+          requires:
+            - Test*
