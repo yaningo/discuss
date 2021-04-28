@@ -23,9 +23,9 @@ jobs:
       - image: circleci/python
     steps:
       - run :
-          name: Testing << parameters.argument >>
+          name: Testing
           command: |
-              echo "I'm testing << parameters.argument >>"
+              echo "I'm testing"
       
   cleanup:
     docker:
