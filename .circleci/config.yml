@@ -47,7 +47,6 @@ workflows:
               
               
       - test:
-          name: Test
           requires:
             - build
             
