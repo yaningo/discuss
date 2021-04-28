@@ -16,6 +16,20 @@ jobs:
           name: Command for << parameters.argument >>
           command: |
               echo << parameters.argument >>
+              
+  test:
+    parameters:
+      argument:
+        description: the argument to run the test against
+        type: string
+        
+    docker:
+      - image: circleci/python
+    steps:
+      - run :
+          name: Testing << parameters.argument >>
+          command: |
+              echo "I'm testing << parameters.argument >>"
       
       
 workflows:
