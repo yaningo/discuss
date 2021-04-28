@@ -1,7 +1,9 @@
 version: 2.1
 
-#### This is the forkeeeeeeeee
-
+default: &default
+  executor:
+    docker:
+      - image: circleci/python
 jobs:
   build:
     parameters:
@@ -9,8 +11,7 @@ jobs:
       #  description: the argument to run the command against
         type: string
         
-    docker:
-      - image: circleci/python
+    <<: *defaults
     steps:
       - run :
           name: Command for << parameters.argument >>
