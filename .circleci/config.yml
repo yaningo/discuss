@@ -6,12 +6,12 @@ default: &default
       - image: circleci/python
 jobs:
   build:
+    <<: *defaults
     parameters:
       argument:
       #  description: the argument to run the command against
         type: string
         
-    <<: *defaults
     steps:
       - run :
           name: Command for << parameters.argument >>
