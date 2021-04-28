@@ -60,4 +60,4 @@ workflows:
             
       - cleanup:
           requires:
-            - /Test.*/
+            - test
