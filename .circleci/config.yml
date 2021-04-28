@@ -1,6 +1,6 @@
 version: 2.1
 
-default: &default
+default: &defaults
   executor:
     docker:
       - image: circleci/python
