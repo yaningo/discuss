@@ -19,11 +19,6 @@ jobs:
               echo << parameters.argument >>
               
   test:
-    parameters:
-      argument:
-      #  description: the argument to run the test against
-        type: string
-        
     docker:
       - image: circleci/python
     steps:
@@ -52,12 +47,9 @@ workflows:
               
               
       - test:
-          name: Test << matrix.argument >>
-          matrix:
-            parameters:
-              argument: ["macos", "windows", "linux"]
+          name: Test
           requires:
-            - Build << matrix.argument >>
+            - build
             
       - cleanup:
           requires:
