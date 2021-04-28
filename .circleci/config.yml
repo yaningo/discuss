@@ -13,10 +13,9 @@ jobs:
       - image: circleci/python
     steps:
       - run :
+          name: Command for << parameters.argument >>
           command: |
               echo << parameters.argument >>
-              #condition_needed_2=true
-              #echo 'export condition_needed_2="true"' >> $BASH_ENV
       
       
 workflows:
@@ -27,3 +26,12 @@ workflows:
           matrix:
             parameters:
               argument: ["macos", "windows", "linux"]
+              
+              
+      - test:
+          name: Test << matrix.argument >>
+          matrix:
+            parameters:
+              argument: ["macos", "windows", "linux"]
+          requires:
+            - Build << matrix.argument >>
